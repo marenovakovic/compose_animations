@@ -1,4 +1,4 @@
-package com.marko.compose_animations.visibility
+package com.marko.compose_animations.highLevel.visibility
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background

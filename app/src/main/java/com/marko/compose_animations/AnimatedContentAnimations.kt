@@ -1,4 +1,4 @@
-package com.marko.compose_animations.animatedContent
+package com.marko.compose_animations.highLevel.animatedContent
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

@@ -13,13 +13,13 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.marko.compose_animations.animatedContent.AnimatedContentAnimations
+import com.marko.compose_animations.highLevel.animatedContent.AnimatedContentAnimations
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MainPager() {
-    val pagerState = rememberPagerState(pageCount = 2)
+    val pagerState = rememberPagerState(pageCount = 3)
     val coroutineScope = rememberCoroutineScope()
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -32,7 +32,12 @@ fun MainPager() {
             },
         ) {
             (0 until pagerState.pageCount).forEach { position ->
-                val text = if (position == 0) "Visibility" else "Content"
+                val text = when (position) {
+                    0 -> "Visibility"
+                    1 -> "Content"
+                    2 -> "Low level"
+                    else -> throw IllegalStateException()
+                }
                 Tab(
                     text = { Text(text = text) },
                     selected = position == pagerState.currentPage,
@@ -52,6 +57,7 @@ fun MainPager() {
             when (position) {
                 0 -> VisibilityAnimations()
                 1 -> AnimatedContentAnimations()
+                2 -> LowLevelAnimations()
             }
         }
     }
